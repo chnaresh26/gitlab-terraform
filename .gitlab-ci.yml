@@ -1,0 +1,27 @@
+// filepath: c:\Users\kumar\OneDrive\gitlab-terraform\.gitlab-ci.yml
+stages:
+  - validate
+  - plan
+  - apply
+
+validate:
+  stage: validate
+  image: hashicorp/terraform:latest
+  script:
+    - terraform init
+    - terraform validate
+
+plan:
+  stage: plan
+  image: hashicorp/terraform:latest
+  script:
+    - terraform init
+    - terraform plan
+
+apply:
+  stage: apply
+  image: hashicorp/terraform:latest
+  script:
+    - terraform init
+    - terraform apply -auto-approve
+  when: manual
